@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package search;
+option java_multiple_files = true;
+option java_package = "com.usoft.suntg.entity";
+
+service SearchService {
+    // 搜索返回id结果集
+    rpc searchIds (SearchRequest) returns (SearchResponse) {
+
+    }
+}
+
+// 搜索请求参数
+message SearchRequest {
+    string keyword = 1;
+    int32 pageNumber = 2;
+    int32 pageSize = 3;
+}
+
+// 搜索返回结果体
+message SearchResponse {
+    int32 pageNumber = 1;
+    int32 pageSize = 2;
+    int32 totalElements = 3;
+    repeated int64 content = 4;
+}
